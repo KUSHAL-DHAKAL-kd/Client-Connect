@@ -9,10 +9,10 @@ const AdminProfile = () => {
 
   const sidebarLinks = [
     { name: 'Overview', path: '/admin/dashboard', icon: Activity },
-    { name: 'Patients', path: '#', icon: Users },
-    { name: 'Doctors', path: '#', icon: ShieldAlert },
-    { name: 'Reports', path: '#', icon: FileText },
-    { name: 'Settings', path: '#', icon: Settings },
+    { name: 'Patients', path: '/admin/patients', icon: Users },
+    { name: 'Doctors', path: '/admin/doctors', icon: ShieldAlert },
+    { name: 'Reports', path: '/admin/reports', icon: FileText },
+    { name: 'Settings', path: '/admin/settings', icon: Settings },
     { name: 'Profile', path: '/admin/profile', icon: User },
   ];
 

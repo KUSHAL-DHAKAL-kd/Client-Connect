@@ -7,6 +7,10 @@ import AppointmentHistory from './pages/patient/AppointmentHistory';
 import PatientProfile from './pages/patient/PatientProfile';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProfile from './pages/admin/AdminProfile';
+import AdminPatients from './pages/admin/AdminPatients';
+import AdminDoctors from './pages/admin/AdminDoctors';
+import AdminReports from './pages/admin/AdminReports';
+import AdminSettings from './pages/admin/AdminSettings';
 import PrivateRoute from './components/PrivateRoute';
 import { useAuth } from './context/AuthContext';
 import './App.css';
@@ -39,6 +43,10 @@ function App() {
 
         {/* Admin Routes */}
         <Route path="/admin/dashboard" element={<PrivateRoute role="admin"><AdminDashboard /></PrivateRoute>} />
+        <Route path="/admin/patients" element={<PrivateRoute role="admin"><AdminPatients /></PrivateRoute>} />
+        <Route path="/admin/doctors" element={<PrivateRoute role="admin"><AdminDoctors /></PrivateRoute>} />
+        <Route path="/admin/reports" element={<PrivateRoute role="admin"><AdminReports /></PrivateRoute>} />
+        <Route path="/admin/settings" element={<PrivateRoute role="admin"><AdminSettings /></PrivateRoute>} />
         <Route path="/admin/profile" element={<PrivateRoute role="admin"><AdminProfile /></PrivateRoute>} />
 
         {/* Fallback */}
