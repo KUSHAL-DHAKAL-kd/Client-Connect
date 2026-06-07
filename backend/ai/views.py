@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from datetime import datetime
-from .slot_predictor import SlotPredictor
+from core.slot_predictor import SlotPredictor
 
 # Instantiate predictor once at module level
 predictor = SlotPredictor()

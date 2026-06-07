@@ -29,6 +29,27 @@
   --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Dark Theme Variables */
+[data-theme='dark'] {
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+  --primary-light: #3730a3;
+  --secondary: #22d3ee;
+  --accent: #f472b6;
+  
+  --bg-main: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --bg-card-hover: rgba(30, 41, 59, 0.9);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 25px rgba(129, 140, 248, 0.2);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -53,8 +74,16 @@ body::before {
     radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.15), transparent 50%),
     radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15), transparent 50%),
     radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.15), transparent 50%),
-    #f8fafc;
+    var(--bg-main);
   z-index: -2;
+}
+
+[data-theme='dark'] body::before {
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.1), transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(34, 211, 238, 0.1), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(244, 114, 182, 0.1), transparent 50%),
+    var(--bg-main);
 }
 
 body::after {
@@ -65,6 +94,10 @@ body::after {
   animation: rotateGradient 30s linear infinite;
   z-index: -1;
   pointer-events: none;
+}
+
+[data-theme='dark'] body::after {
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 60%);
 }
 
 @keyframes rotateGradient {
@@ -83,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-card);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: var(--shadow-glass);
   border-radius: var(--radius-lg);
   transition: var(--transition);

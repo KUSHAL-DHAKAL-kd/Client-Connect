@@ -3,6 +3,10 @@
 import os
 import sys
 
+# Add the root 'ai' folder to sys.path so we can import its modules
+ai_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../ai'))
+if ai_path not in sys.path:
+    sys.path.append(ai_path)
 
 def main():
     """Run administrative tasks."""

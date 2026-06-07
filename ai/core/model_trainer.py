@@ -9,7 +9,7 @@ class ModelTrainer:
     def __init__(self):
         # Determine paths relative to this file
         current_dir = os.path.dirname(__file__)
-        self.save_dir = os.path.join(current_dir, 'saved_model')
+        self.save_dir = os.path.abspath(os.path.join(current_dir, '..', 'saved_model'))
         
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)

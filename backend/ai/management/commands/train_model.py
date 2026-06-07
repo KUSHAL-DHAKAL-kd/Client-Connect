@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from ai.model_trainer import ModelTrainer
+from core.model_trainer import ModelTrainer
 
 class Command(BaseCommand):
     help = 'Trains the Decision Tree AI model for slot suggestions'

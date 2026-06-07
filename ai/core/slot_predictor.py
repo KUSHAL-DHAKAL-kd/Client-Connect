@@ -6,8 +6,8 @@ from datetime import date
 class SlotPredictor:
     def __init__(self):
         current_dir = os.path.dirname(__file__)
-        self.model_path = os.path.join(current_dir, 'saved_model', 'decision_tree.joblib')
-        self.encoder_path = os.path.join(current_dir, 'saved_model', 'label_encoder.joblib')
+        self.model_path = os.path.abspath(os.path.join(current_dir, '..', 'saved_model', 'decision_tree.joblib'))
+        self.encoder_path = os.path.abspath(os.path.join(current_dir, '..', 'saved_model', 'label_encoder.joblib'))
         
         self.model = None
         self.le = None

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
-import { Users, Activity, ShieldAlert, FileText, Settings, User, Save, Bell, Clock, Globe } from 'lucide-react';
+import { Users, Activity, ShieldAlert, FileText, Settings, User, Save, Bell, Clock, Globe, Moon } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const AdminSettings = () => {
   const { logout } = useAuth();
+  const { theme, setTheme } = useTheme();
   
   const sidebarLinks = [
     { name: 'Overview', path: '/admin/dashboard', icon: Activity },
@@ -45,7 +47,7 @@ const AdminSettings = () => {
             
             {/* Clinic Details */}
             <div className="glass-panel" style={{ padding: '2rem' }}>
-              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#1e293b' }}>
+              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
                 <Globe size={20} color="#4f46e5" /> General Information
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
@@ -64,9 +66,24 @@ const AdminSettings = () => {
               </div>
             </div>
 
+            {/* Appearance / Theme */}
+            <div className="glass-panel" style={{ padding: '2rem' }}>
+              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
+                <Moon size={20} color="#8b5cf6" /> Appearance
+              </h2>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                {['light', 'dark', 'system'].map(t => (
+                  <label key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', padding: '0.75rem 1.25rem', background: theme === t ? 'var(--primary-light)' : 'rgba(255,255,255,0.5)', border: `2px solid ${theme === t ? 'var(--primary)' : 'transparent'}`, borderRadius: '8px', color: theme === t ? 'var(--primary)' : '#64748b', fontWeight: '600', textTransform: 'capitalize' }}>
+                    <input type="radio" name="theme" value={t} checked={theme === t} onChange={(e) => setTheme(e.target.value)} style={{ display: 'none' }} />
+                    {t}
+                  </label>
+                ))}
+              </div>
+            </div>
+
             {/* Operating Hours */}
             <div className="glass-panel" style={{ padding: '2rem' }}>
-              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#1e293b' }}>
+              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
                 <Clock size={20} color="#059669" /> Operating Hours
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
@@ -83,21 +100,21 @@ const AdminSettings = () => {
 
             {/* Notifications */}
             <div className="glass-panel" style={{ padding: '2rem' }}>
-              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#1e293b' }}>
+              <h2 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}>
                 <Bell size={20} color="#ea580c" /> Notifications
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
                   <input type="checkbox" defaultChecked style={{ width: '1.25rem', height: '1.25rem', accentColor: 'var(--primary)' }} />
-                  <span style={{ fontWeight: '500', color: '#334155' }}>Email patients upon appointment approval</span>
+                  <span style={{ fontWeight: '500', color: 'var(--text-main)' }}>Email patients upon appointment approval</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
                   <input type="checkbox" defaultChecked style={{ width: '1.25rem', height: '1.25rem', accentColor: 'var(--primary)' }} />
-                  <span style={{ fontWeight: '500', color: '#334155' }}>Notify admins on new booking requests</span>
+                  <span style={{ fontWeight: '500', color: 'var(--text-main)' }}>Notify admins on new booking requests</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }}>
                   <input type="checkbox" style={{ width: '1.25rem', height: '1.25rem', accentColor: 'var(--primary)' }} />
-                  <span style={{ fontWeight: '500', color: '#334155' }}>Enable SMS Reminders (Requires Premium Integration)</span>
+                  <span style={{ fontWeight: '500', color: 'var(--text-main)' }}>Enable SMS Reminders (Requires Premium Integration)</span>
                 </label>
               </div>
             </div>
